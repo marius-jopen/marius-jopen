@@ -34,12 +34,12 @@ export interface Project {
 export const projects: Project[] = [
   {
     name: "THE ROBOTS",
-    description: "Powering creative companies with AI",
+    description: "AI Strategy & Implementation Laboratory. Founded by Paula Kühn and me.",
     url: "https://therobots.world",
   },
   {
     name: "100k",
-    description: "Web Development Studio",
+    description: "Web Development Studio. Founded by Armin Unruh and me.",
     url: "https://100k.studio",
   },
   // {

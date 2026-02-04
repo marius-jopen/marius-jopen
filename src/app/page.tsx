@@ -57,7 +57,7 @@ export default function Home() {
 
           {/* Selected Projects */}
           <Section>
-            <SectionHeading>Selected projects:</SectionHeading>
+            <SectionHeading>Ventures:</SectionHeading>
             <div className="space-y-4 mt-2">
               {projects.map((project) => (
                 <div key={project.name}>
