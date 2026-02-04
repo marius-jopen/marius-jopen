@@ -42,11 +42,11 @@ export const projects: Project[] = [
     description: "Web Development Studio",
     url: "https://100k.studio",
   },
-  {
-    name: "Spacebirth 2",
-    description: "Awarded Feature Sci-Fi Movie",
-    url: "https://spacebirth2.com",
-  },
+  // {
+  //   name: "Spacebirth 2",
+  //   description: "Awarded Feature Sci-Fi Movie",
+  //   url: "https://spacebirth2.com",
+  // },
 ];
 
 export interface Client {
