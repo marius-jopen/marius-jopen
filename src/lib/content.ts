@@ -103,3 +103,8 @@ export const cta = {
   secondaryLabel: "Subscribe",
   secondaryUrl: "https://blog.mariusjopen.com/",
 };
+
+export const footer = {
+  legalLabel: "Imprint",
+  legalUrl: "/imprint",
+};

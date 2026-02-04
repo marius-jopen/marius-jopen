@@ -7,6 +7,7 @@ import {
   contact,
   news,
   cta,
+  footer,
 } from "@/lib/content";
 
 // Container component for consistent padding and max-width
@@ -36,7 +37,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-black">
       <Container>
-        <div className="pt-6 pb-28 md:pt-32 md:pb-32">
+        <div className="pt-6 pb-4 md:pt-32 md:pb-32">
           {/* Hero / Header */}
           <Section>
             <h1 className="font-bold leading-tight">{hero.name}</h1>
@@ -169,6 +170,18 @@ export default function Home() {
               </Link>
             )}
           </div>
+        </div>
+      )}
+
+      {/* Footer Legal Link */}
+      {footer.legalUrl && (
+        <div className="pb-4 px-6 md:px-0 md:fixed md:bottom-3 md:left-6 pb-32 md:pb-4">
+          <Link
+            href={footer.legalUrl}
+            className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            {footer.legalLabel}
+          </Link>
         </div>
       )}
     </main>
