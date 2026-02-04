@@ -47,7 +47,11 @@ export default function Home() {
 
           {/* About / Intro */}
           <Section>
-            <p className="leading-tight">{about.text}</p>
+            {about.paragraphs.map((paragraph, index) => (
+              <p key={index} className="leading-tight mb-4 last:mb-0">
+                {paragraph}
+              </p>
+            ))}
           </Section>
 
           {/* Selected Projects */}
@@ -56,14 +60,18 @@ export default function Home() {
             <div className="space-y-4 mt-2">
               {projects.map((project) => (
                 <div key={project.name}>
-                  <Link
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="leading-tight hover:opacity-60 transition-opacity"
-                  >
-                    {project.name}
-                  </Link>
+                  {project.url ? (
+                    <Link
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="leading-tight hover:opacity-60 transition-opacity"
+                    >
+                      {project.name}
+                    </Link>
+                  ) : (
+                    <span className="leading-tight">{project.name}</span>
+                  )}
                   <p className="leading-tight italic">
                     {project.description}
                   </p>
@@ -77,15 +85,19 @@ export default function Home() {
             <SectionHeading>Selected clients and collaborators:</SectionHeading>
             <p className="leading-tight mt-1">
               {clients.map((client, index) => (
-                <span key={client.name}>
-                  <Link
-                    href={client.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:opacity-60 transition-opacity"
-                  >
-                    {client.name}
-                  </Link>
+                <span key={index}>
+                  {client.url ? (
+                    <Link
+                      href={client.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:opacity-60 transition-opacity"
+                    >
+                      {client.name}
+                    </Link>
+                  ) : (
+                    <span>{client.name}</span>
+                  )}
                   {index < clients.length - 1 && ", "}
                 </span>
               ))}
@@ -97,23 +109,31 @@ export default function Home() {
             <SectionHeading>Contact:</SectionHeading>
             <p className="leading-tight mt-1">{contact.intro}</p>
             <div className="mt-4">
-              <Link
-                href={`mailto:${contact.email}`}
-                className="leading-tight block hover:opacity-60 transition-opacity"
-              >
-                {contact.email}
-              </Link>
-              {contact.links.map((link) => (
+              {contact.email && (
                 <Link
-                  key={link.label}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`mailto:${contact.email}`}
                   className="leading-tight block hover:opacity-60 transition-opacity"
                 >
-                  {link.label}
+                  {contact.email}
                 </Link>
-              ))}
+              )}
+              {contact.links.map((link) => 
+                link.url ? (
+                  <Link
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="leading-tight block hover:opacity-60 transition-opacity"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <span key={link.label} className="leading-tight block">
+                    {link.label}
+                  </span>
+                )
+              )}
             </div>
           </Section>
 
@@ -122,19 +142,31 @@ export default function Home() {
             <SectionHeading>News:</SectionHeading>
             <p className="leading-tight mt-1">{news.intro}</p>
             <div className="mt-4">
-              <Link
-                href={news.readUrl}
-                className="leading-tight hover:opacity-60 transition-opacity"
-              >
-                Read
-              </Link>
+              {news.readUrl ? (
+                <Link
+                  href={news.readUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-tight hover:opacity-60 transition-opacity"
+                >
+                  Read
+                </Link>
+              ) : (
+                <span className="leading-tight">Read</span>
+              )}
               <span className="leading-tight"> / </span>
-              <Link
-                href={news.subscribeUrl}
-                className="leading-tight hover:opacity-60 transition-opacity"
-              >
-                Subscribe
-              </Link>
+              {news.subscribeUrl ? (
+                <Link
+                  href={news.subscribeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-tight hover:opacity-60 transition-opacity"
+                >
+                  Subscribe
+                </Link>
+              ) : (
+                <span className="leading-tight">Subscribe</span>
+              )}
             </div>
           </Section>
 
@@ -142,22 +174,30 @@ export default function Home() {
       </Container>
 
       {/* Fixed CTA Buttons */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 md:p-6 md:left-auto md:right-0 md:bottom-0 bg-white md:bg-transparent">
-        <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
-          <Link
-            href={cta.secondaryUrl}
-            className="btn inline-flex text-base items-center justify-center px-8 py-2 font-bold bg-[#d7d7d7] text-black rounded-full hover:bg-[#c7c7c7] transition-colors w-full md:w-auto"
-          >
-            {cta.secondaryLabel}
-          </Link>
-          <Link
-            href={cta.primaryUrl}
-            className="btn inline-flex text-base items-center justify-center px-8 py-2 font-bold bg-black text-white rounded-full hover:bg-gray-800 transition-colors w-full md:w-auto"
-          >
-            {cta.primaryLabel}
-          </Link>
+      {(cta.secondaryUrl || cta.primaryUrl) && (
+        <div className="fixed bottom-0 left-0 right-0 p-4 md:p-6 md:left-auto md:right-0 md:bottom-0 bg-white md:bg-transparent">
+          <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+            {cta.secondaryUrl && (
+              <Link
+                href={cta.secondaryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn inline-flex text-base items-center justify-center px-8 py-2 font-bold bg-[#d7d7d7] text-black rounded-full hover:bg-[#c7c7c7] transition-colors w-full md:w-auto"
+              >
+                {cta.secondaryLabel}
+              </Link>
+            )}
+            {cta.primaryUrl && (
+              <Link
+                href={cta.primaryUrl}
+                className="btn inline-flex text-base items-center justify-center px-8 py-2 font-bold bg-black text-white rounded-full hover:bg-gray-800 transition-colors w-full md:w-auto"
+              >
+                {cta.primaryLabel}
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </main>
   );
 }

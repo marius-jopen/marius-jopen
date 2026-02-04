@@ -19,7 +19,10 @@ export const hero = {
 };
 
 export const about = {
-  text: "I operate at the intersection of code, culture, and narrative. As a Creative Technologist, I build systems that do more than just function—they tell stories. My work oscillates between the precision of high-end web development and the chaotic beauty of generative AI.",
+  paragraphs: [
+    "I operate at the intersection of code, culture, and visual art. My practice is driven by exploration. I translate emerging technologies into digital systems and visual narratives.",
+    "My work oscillates between the precision of high-end web architecture and the chaotic beauty of generative AI. I combine technical logic with artistic intent to create work that is visual, clear, and alive.",
+  ],
 };
 
 export interface Project {
@@ -32,7 +35,7 @@ export const projects: Project[] = [
   {
     name: "THE ROBOTS",
     description: "Powering creative companies with AI",
-    url: "https://therobots.ai",
+    url: "https://therobots.world",
   },
   {
     name: "100k",
@@ -52,16 +55,31 @@ export interface Client {
 }
 
 export const clients: Client[] = [
-  { name: "LVMH", url: "https://www.lvmh.com" },
-  { name: "Céline", url: "https://www.celine.com" },
-  { name: "Google", url: "https://www.google.com" },
-  { name: "LAS Artfoundation", url: "https://www.lightartspace.org" },
-  { name: "Stefan Sagmeister", url: "https://sagmeister.com" },
+  { name: "Google", url: "" },
+  { name: "LVMH", url: "" },
+  { name: "Louis Vuitton", url: "" },
+  { name: "Céline", url: "" },
+  { name: "Burberry", url: "" },
+  { name: "Loro Piana", url: "" },
+  { name: "McLaren", url: "" },
+  { name: "Marvel", url: "" },
+  { name: "Audemars Piguet", url: "" },
+  { name: "Stefan Sagmeister", url: "" },
+  { name: "LAS Art Foundation", url: "" },
+  { name: "Tinder", url: "" },
+  { name: "Wallet Connect", url: "" },
+  { name: "Hypebeast", url: "" },
+  { name: "Tiger of Sweden", url: "" },
+  { name: "Institut Français de la Mode", url: "" },
+  { name: "Skepta", url: "" },
+  { name: "DJ Hell", url: "" },
+  { name: "Len Faki", url: "" },
+  { name: "Federal Government of Germany", url: "" },
 ];
 
 export const contact = {
   intro:
-    "I am currently open to select commissions and collaborations—particularly where cinema, AI, and code intersect.",
+    "I am currently open to select commissions and collaborations.",
   email: "mail@mariusjopen.com",
   links: [
     { label: "Instagram", url: "https://instagram.com/mariusjopen" },
@@ -72,7 +90,7 @@ export const contact = {
 export const news = {
   intro:
     "Every week, I document the chaos of creation. From AI workflows to the realities of running a studio, I share the process behind the projects.",
-  subscribeUrl: "/subscribe",
+  subscribeUrl: "https://blog.mariusjopen.com/",
   readUrl: "/news",
 };
 
@@ -80,5 +98,5 @@ export const cta = {
   primaryLabel: "Get In Contact",
   primaryUrl: "mailto:mail@mariusjopen.com",
   secondaryLabel: "Subscribe",
-  secondaryUrl: "/subscribe",
+  secondaryUrl: "https://blog.mariusjopen.com/",
 };
