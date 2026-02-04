@@ -104,6 +104,12 @@ export default function Home() {
             </p>
           </Section>
 
+          {/* News */}
+          <Section>
+            <SectionHeading>News:</SectionHeading>
+            <p className="leading-tight mt-1">{news.intro}</p>
+          </Section>
+
           {/* Contact */}
           <Section>
             <SectionHeading>Contact:</SectionHeading>
@@ -133,39 +139,6 @@ export default function Home() {
                     {link.label}
                   </span>
                 )
-              )}
-            </div>
-          </Section>
-
-          {/* News */}
-          <Section>
-            <SectionHeading>News:</SectionHeading>
-            <p className="leading-tight mt-1">{news.intro}</p>
-            <div className="mt-4">
-              {news.readUrl ? (
-                <Link
-                  href={news.readUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="leading-tight hover:opacity-60 transition-opacity"
-                >
-                  Read
-                </Link>
-              ) : (
-                <span className="leading-tight">Read</span>
-              )}
-              <span className="leading-tight"> / </span>
-              {news.subscribeUrl ? (
-                <Link
-                  href={news.subscribeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="leading-tight hover:opacity-60 transition-opacity"
-                >
-                  Subscribe
-                </Link>
-              ) : (
-                <span className="leading-tight">Subscribe</span>
               )}
             </div>
           </Section>

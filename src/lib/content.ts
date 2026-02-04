@@ -92,7 +92,7 @@ export const contact = {
 
 export const news = {
   intro:
-    "Every week, I document the chaos of creation. From AI workflows to the realities of running a studio, I share the process behind the projects.",
+    "Every week, I document the chaos of creation. From AI workflows to the realities of running a studio, I share the process behind the projects. Feel free to subscribe to my newsletter.",
   subscribeUrl: "https://blog.mariusjopen.com/",
   readUrl: "/news",
 };
