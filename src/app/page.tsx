@@ -1,65 +1,163 @@
-import Image from "next/image";
+import Link from "next/link";
+import {
+  hero,
+  about,
+  projects,
+  clients,
+  contact,
+  news,
+  cta,
+} from "@/lib/content";
+
+// Container component for consistent padding and max-width
+function Container({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="mx-auto w-full max-w-2xl px-6 md:px-8">{children}</div>
+  );
+}
+
+// Section component for consistent spacing
+function Section({
+  children,
+  className = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return <section className={`mb-12 ${className}`}>{children}</section>;
+}
+
+// Section heading component
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return <h2 className="font-bold leading-tight mb-1">{children}</h2>;
+}
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-white text-black">
+      <Container>
+        <div className="pt-6 pb-28 md:pt-32 md:pb-32">
+          {/* Hero / Header */}
+          <Section>
+            <h1 className="font-bold leading-tight">{hero.name}</h1>
+            <p className="leading-tight">{hero.role}</p>
+            <p className="leading-tight">{hero.location}</p>
+            <p className="leading-tight">{hero.global}</p>
+          </Section>
+
+          {/* About / Intro */}
+          <Section>
+            <p className="leading-tight">{about.text}</p>
+          </Section>
+
+          {/* Selected Projects */}
+          <Section>
+            <SectionHeading>Selected projects:</SectionHeading>
+            <div className="space-y-4 mt-2">
+              {projects.map((project) => (
+                <div key={project.name}>
+                  <Link
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="leading-tight hover:opacity-60 transition-opacity"
+                  >
+                    {project.name}
+                  </Link>
+                  <p className="leading-tight italic">
+                    {project.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          {/* Selected Clients & Collaborators */}
+          <Section>
+            <SectionHeading>Selected clients and collaborators:</SectionHeading>
+            <p className="leading-tight mt-1">
+              {clients.map((client, index) => (
+                <span key={client.name}>
+                  <Link
+                    href={client.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:opacity-60 transition-opacity"
+                  >
+                    {client.name}
+                  </Link>
+                  {index < clients.length - 1 && ", "}
+                </span>
+              ))}
+            </p>
+          </Section>
+
+          {/* Contact */}
+          <Section>
+            <SectionHeading>Contact:</SectionHeading>
+            <p className="leading-tight mt-1">{contact.intro}</p>
+            <div className="mt-4">
+              <Link
+                href={`mailto:${contact.email}`}
+                className="leading-tight block hover:opacity-60 transition-opacity"
+              >
+                {contact.email}
+              </Link>
+              {contact.links.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="leading-tight block hover:opacity-60 transition-opacity"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </Section>
+
+          {/* News */}
+          <Section>
+            <SectionHeading>News:</SectionHeading>
+            <p className="leading-tight mt-1">{news.intro}</p>
+            <div className="mt-4">
+              <Link
+                href={news.readUrl}
+                className="leading-tight hover:opacity-60 transition-opacity"
+              >
+                Read
+              </Link>
+              <span className="leading-tight"> / </span>
+              <Link
+                href={news.subscribeUrl}
+                className="leading-tight hover:opacity-60 transition-opacity"
+              >
+                Subscribe
+              </Link>
+            </div>
+          </Section>
+
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </Container>
+
+      {/* Fixed CTA Buttons */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 md:p-6 md:left-auto md:right-0 md:bottom-0 bg-white md:bg-transparent">
+        <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
+          <Link
+            href={cta.secondaryUrl}
+            className="btn inline-flex text-base items-center justify-center px-8 py-2 font-bold bg-[#d7d7d7] text-black rounded-full hover:bg-[#c7c7c7] transition-colors w-full md:w-auto"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {cta.secondaryLabel}
+          </Link>
+          <Link
+            href={cta.primaryUrl}
+            className="btn inline-flex text-base items-center justify-center px-8 py-2 font-bold bg-black text-white rounded-full hover:bg-gray-800 transition-colors w-full md:w-auto"
           >
-            Documentation
-          </a>
+            {cta.primaryLabel}
+          </Link>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
