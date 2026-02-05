@@ -20,8 +20,8 @@ export const hero = {
 
 export const about = {
   paragraphs: [
-    "I operate at the intersection of code, culture, and visual art. My practice is driven by exploration. I translate emerging technologies into digital systems and visual narratives.",
-    "My work oscillates between the precision of high-end web architecture and the chaotic beauty of generative AI. I combine technical logic with artistic intent to create work that is visual, clear, and alive.",
+    "I operate at the intersection of code, cinema, and visual art. My practice is driven by exploration. I translate emerging technologies into digital systems and visual narratives.",
+    "My work oscillates between the precision of high-end tech architecture and the chaotic beauty of generative AI. I combine technical logic with artistic intent to create work that is visual, clear, and radically alive.",
   ],
 };
 
@@ -42,11 +42,16 @@ export const projects: Project[] = [
     description: "Web Development Studio. Founded by Armin Unruh and me.",
     url: "https://100k.studio",
   },
-  // {
-  //   name: "Spacebirth 2",
-  //   description: "Awarded Feature Sci-Fi Movie",
-  //   url: "https://spacebirth2.com",
-  // },
+  {
+    name: "Ghostbirth 2",
+    description: "Feature Horror Movie about a pregnant ghost in a massage studio in Bangkok.",
+    url: "https://blog.mariusjopen.com/in-search-of-a-pregnant-ghost/",
+  },
+  {
+    name: "Spacebirth 2",
+    description: "Psychedelic Feature Sci-Fi Movie made from cardboard. A film by Richard Keith, Audrey Belaud and me.",
+    url: "https://spacebirth2.com",
+  },
 ];
 
 export interface Client {
