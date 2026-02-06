@@ -179,7 +179,7 @@ export default function Home() {
         <div className="pb-4 px-6 md:px-0 md:fixed md:bottom-3 md:left-6 pb-32 md:pb-4">
           <Link
             href={footer.legalUrl}
-            className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+            className="text-xs text-gray-400 hover:opacity-60 transition-opacity"
           >
             {footer.legalLabel}
           </Link>
