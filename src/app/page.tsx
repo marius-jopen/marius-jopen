@@ -9,6 +9,8 @@ import {
   cta,
   footer,
 } from "@/lib/content";
+import { EmailLink } from "@/components/EmailLink";
+import { EmailButton } from "@/components/EmailButton";
 
 // Container component for consistent padding and max-width
 function Container({ children }: { children: React.ReactNode }) {
@@ -117,12 +119,12 @@ export default function Home() {
             <p className="leading-tight mt-1">{contact.intro}</p>
             <div className="mt-4">
               {contact.email && (
-                <Link
-                  href={`mailto:${contact.email}`}
+                <EmailLink
+                  email={contact.email}
                   className="leading-tight block hover:opacity-60 transition-opacity"
                 >
                   {contact.email}
-                </Link>
+                </EmailLink>
               )}
               {contact.links.map((link) => 
                 link.url ? (
@@ -162,12 +164,11 @@ export default function Home() {
               </Link>
             )}
             {cta.primaryUrl && (
-              <Link
-                href={cta.primaryUrl}
+              <EmailButton
+                email={contact.email}
+                label={cta.primaryLabel}
                 className="btn inline-flex text-base items-center justify-center px-8 py-2 font-bold bg-black text-white rounded-full hover:bg-gray-800 transition-colors w-full md:w-auto"
-              >
-                {cta.primaryLabel}
-              </Link>
+              />
             )}
           </div>
         </div>

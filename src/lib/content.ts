@@ -8,8 +8,8 @@
 export const siteConfig = {
   title: "Marius Jopen | Creative Technologist",
   description:
-    "Creative Technologist operating at the intersection of code, culture, and narrative. Berlin based, globally active.",
-};
+    "Creative Technologist & Director operating at the intersection of code, cinema, and visual art. Combining high-end tech architecture with generative AI. Berlin based, globally active.",
+  };
 
 export const hero = {
   name: "Marius Jopen",
