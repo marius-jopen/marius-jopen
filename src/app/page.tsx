@@ -70,7 +70,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="leading-tight hover:opacity-60 transition-opacity"
                     >
-                      {project.name}
+                      → {project.name}
                     </Link>
                   ) : (
                     <span className="leading-tight">{project.name}</span>
