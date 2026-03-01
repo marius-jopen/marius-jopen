@@ -61,7 +61,7 @@ export default function Home() {
                       href={paragraph.link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:opacity-60 transition-opacity underline"
+                      className="hover:opacity-60 transition-opacity"
                     >
                       {paragraph.link.text}
                     </Link>
