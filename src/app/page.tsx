@@ -52,7 +52,22 @@ export default function Home() {
           <Section>
             {about.paragraphs.map((paragraph, index) => (
               <p key={index} className="leading-tight mb-4 last:mb-0">
-                {paragraph}
+                {typeof paragraph === "string" ? (
+                  paragraph
+                ) : (
+                  <>
+                    {paragraph.before}
+                    <Link
+                      href={paragraph.link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:opacity-60 transition-opacity underline"
+                    >
+                      {paragraph.link.text}
+                    </Link>
+                    {paragraph.after}
+                  </>
+                )}
               </p>
             ))}
           </Section>

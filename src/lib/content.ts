@@ -18,11 +18,24 @@ export const hero = {
   global: "Globally active.",
 };
 
+export type AboutParagraph =
+  | string
+  | {
+      before: string;
+      link: { text: string; url: string };
+      after: string;
+    };
+
 export const about = {
   paragraphs: [
     "I operate at the intersection of code, cinema, and visual art. My practice is driven by exploration. I translate emerging technologies into digital systems and visual narratives.",
     "My work oscillates between the precision of high-end tech architecture and the chaotic beauty of generative AI. I combine technical logic with artistic intent to create work that is visual, clear, and radically alive.",
-  ],
+    {
+      before: "I am also a member of ",
+      link: { text: "ArtCamp", url: "https://www.madeatartcamp.com/" },
+      after: ", a production studio based in New York",
+    },
+  ] as AboutParagraph[],
 };
 
 export interface Project {
