@@ -37,7 +37,7 @@ export interface ProjectCategory {
 
 export const projectCategories: ProjectCategory[] = [
   {
-    label: "Ventures & Initiated Projects:",
+    label: "Ventures:",
     items: [
       {
         name: "THE ROBOTS",
