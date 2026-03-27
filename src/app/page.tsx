@@ -2,7 +2,7 @@ import Link from "next/link";
 import {
   hero,
   about,
-  projects,
+  projectCategories,
   clients,
   contact,
   news,
@@ -11,6 +11,32 @@ import {
 } from "@/lib/content";
 import { EmailLink } from "@/components/EmailLink";
 import { EmailButton } from "@/components/EmailButton";
+
+// Parses markdown-style [text](url) links within a string into React elements
+function RichText({ children }: { children: string }) {
+  const parts = children.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+        if (match) {
+          return (
+            <Link
+              key={i}
+              href={match[2]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-60 transition-opacity"
+            >
+              {match[1]}
+            </Link>
+          );
+        }
+        return part;
+      })}
+    </>
+  );
+}
 
 // Container component for consistent padding and max-width
 function Container({ children }: { children: React.ReactNode }) {
@@ -45,58 +71,44 @@ export default function Home() {
             <h1 className="font-bold leading-tight">{hero.name}</h1>
             <p className="leading-tight">{hero.role}</p>
             <p className="leading-tight">{hero.location}</p>
-            <p className="leading-tight">{hero.global}</p>
           </Section>
 
           {/* About / Intro */}
           <Section>
             {about.paragraphs.map((paragraph, index) => (
               <p key={index} className="leading-tight mb-4 last:mb-0">
-                {typeof paragraph === "string" ? (
-                  paragraph
-                ) : (
-                  <>
-                    {paragraph.before}
-                    <Link
-                      href={paragraph.link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:opacity-60 transition-opacity"
-                    >
-                      {paragraph.link.text}
-                    </Link>
-                    {paragraph.after}
-                  </>
-                )}
+                <RichText>{paragraph}</RichText>
               </p>
             ))}
           </Section>
 
-          {/* Selected Projects */}
-          <Section>
-            <SectionHeading>Ventures & Initiated Projects:</SectionHeading>
-            <div className="space-y-4 mt-2">
-              {projects.map((project) => (
-                <div key={project.name}>
-                  {project.url ? (
-                    <Link
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="leading-tight hover:opacity-60 transition-opacity"
-                    >
-                      → {project.name}
-                    </Link>
-                  ) : (
-                    <span className="leading-tight">{project.name}</span>
-                  )}
-                  <p className="leading-tight italic">
-                    {project.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </Section>
+          {/* Projects */}
+          {projectCategories.map((category) => (
+            <Section key={category.label}>
+              <SectionHeading>{category.label}</SectionHeading>
+              <div className="space-y-4 mt-2">
+                {category.items.map((project) => (
+                  <div key={project.name}>
+                    {project.url ? (
+                      <Link
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="leading-tight underline hover:opacity-60 transition-opacity"
+                      >
+                        {project.name}
+                      </Link>
+                    ) : (
+                      <span className="leading-tight">{project.name}</span>
+                    )}
+                    <p className="leading-tight italic">
+                      {project.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Section>
+          ))}
 
           {/* Selected Clients & Collaborators */}
           <Section>
@@ -165,7 +177,7 @@ export default function Home() {
       </Container>
 
       {/* Fixed CTA Buttons */}
-      {(cta.secondaryUrl || cta.primaryUrl) && (
+      {(cta.secondaryUrl || contact.email) && (
         <div className="fixed bottom-0 left-0 right-0 p-4 md:p-6 md:left-auto md:right-0 md:bottom-0 bg-white md:bg-transparent">
           <div className="flex flex-col md:flex-row gap-3 w-full md:w-auto">
             {cta.secondaryUrl && (
@@ -178,7 +190,7 @@ export default function Home() {
                 {cta.secondaryLabel}
               </Link>
             )}
-            {cta.primaryUrl && (
+            {contact.email && (
               <EmailButton
                 email={contact.email}
                 label={cta.primaryLabel}

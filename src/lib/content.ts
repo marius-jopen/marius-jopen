@@ -14,28 +14,14 @@ export const siteConfig = {
 export const hero = {
   name: "Marius Jopen",
   role: "Creative Technologist.",
-  location: "Berlin based.",
-  global: "Globally active.",
+  location: "Globally active.",
 };
-
-export type AboutParagraph =
-  | string
-  | {
-      before: string;
-      link: { text: string; url: string };
-      after: string;
-    };
 
 export const about = {
   paragraphs: [
     "I operate at the intersection of code, cinema, and visual art. My practice is driven by exploration. I translate emerging technologies into digital systems and visual narratives.",
     "My work oscillates between the precision of high-end tech architecture and the chaotic beauty of generative AI. I combine technical logic with artistic intent to create work that is visual, clear, and radically alive.",
-    {
-      before: "I am also a member of ",
-      link: { text: "ArtCamp", url: "https://www.madeatartcamp.com/" },
-      after: ", a production studio based in New York",
-    },
-  ] as AboutParagraph[],
+  ],
 };
 
 export interface Project {
@@ -44,58 +30,98 @@ export interface Project {
   url: string;
 }
 
-export const projects: Project[] = [
+export interface ProjectCategory {
+  label: string;
+  items: Project[];
+}
+
+export const projectCategories: ProjectCategory[] = [
   {
-    name: "THE ROBOTS",
-    description: "AI Strategy & Implementation Laboratory. Founded by Paula Kühn and me.",
-    url: "https://therobots.world",
+    label: "Ventures & Initiated Projects:",
+    items: [
+      {
+        name: "THE ROBOTS",
+        description: "AI Strategy & Implementation Laboratory. Founded by Paula Kühn and me.",
+        url: "https://therobots.world",
+      },
+      {
+        name: "100k",
+        description: "Web Development Studio. Founded by Armin Unruh and me.",
+        url: "https://100k.studio",
+      },
+      {
+        name: "Love Foundation",
+        description: "Global community movement for unconditional love, clean water access, and social change. Co-founded by Philippe Birker, David Caspers and me.",
+        url: "https://love-foundation.org",
+      },
+    ],
   },
   {
-    name: "100k",
-    description: "Web Development Studio. Founded by Armin Unruh and me.",
-    url: "https://100k.studio",
+    label: "Projects:",
+    items: [
+      {
+        name: "Ghostbirth 2",
+        description: "Feature Horror Movie about a pregnant ghost in a massage studio in Bangkok.",
+        url: "https://blog.mariusjopen.com/in-search-of-a-pregnant-ghost/",
+      },
+      {
+        name: "Spacebirth 2",
+        description: "Psychedelic Feature Sci-Fi Movie made from cardboard. A film by Richard Keith, Audrey Belaud and me.",
+        url: "https://spacebirth2.com",
+      },
+      {
+        name: "THE POSTER TIMES",
+        description: "One poster per day for one and a half years, a visual response to daily news events.",
+        url: "https://www.the-poster-times.xyz/",
+      },
+    ],
   },
   {
-    name: "Ghostbirth 2",
-    description: "Feature Horror Movie about a pregnant ghost in a massage studio in Bangkok.",
-    url: "https://blog.mariusjopen.com/in-search-of-a-pregnant-ghost/",
-  },
-  {
-    name: "Spacebirth 2",
-    description: "Psychedelic Feature Sci-Fi Movie made from cardboard. A film by Richard Keith, Audrey Belaud and me.",
-    url: "https://spacebirth2.com",
+    label: "Affiliated:",
+    items: [
+      {
+        name: "ArtCamp",
+        description: "Multi-disciplinary creative studio blending traditional techniques with emerging technology. Founded by Santiago Carrasquilla in New York.",
+        url: "https://www.madeatartcamp.com/",
+      },
+      {
+        name: "Limn",
+        description: "AI research and development lab exploring latent space as creative and philosophical territory. Founded by Tobias Rees.",
+        url: "https://www.instagram.com/limn_ai/",
+      },
+    ],
   },
 ];
 
 export interface Client {
   name: string;
-  url: string;
+  url?: string;
 }
 
 export const clients: Client[] = [
-  { name: "Google", url: "" },
-  { name: "LVMH", url: "" },
-  { name: "Louis Vuitton", url: "" },
-  { name: "Céline", url: "" },
-  { name: "Burberry", url: "" },
-  { name: "Loro Piana", url: "" },
-  { name: "McLaren", url: "" },
-  { name: "Marvel", url: "" },
-  { name: "Audemars Piguet", url: "" },
-  { name: "Stefan Sagmeister", url: "" },
-  { name: "Art Camp", url: "" },
-  { name: "Limn", url: "" },
-  { name: "WiP", url: "" },
-  { name: "LAS Art Foundation", url: "" },
-  { name: "Tinder", url: "" },
-  { name: "Wallet Connect", url: "" },
-  { name: "Hypebeast", url: "" },
-  { name: "Tiger of Sweden", url: "" },
-  { name: "Institut Français de la Mode", url: "" },
-  { name: "Skepta", url: "" },
-  { name: "DJ Hell", url: "" },
-  { name: "Len Faki", url: "" },
-  { name: "Federal Government of Germany", url: "" },
+  { name: "Google" },
+  { name: "LVMH" },
+  { name: "Louis Vuitton" },
+  { name: "Céline" },
+  { name: "Burberry" },
+  { name: "Loro Piana" },
+  { name: "McLaren" },
+  { name: "Marvel" },
+  { name: "Audemars Piguet" },
+  { name: "Stefan Sagmeister" },
+  { name: "Art Camp" },
+  { name: "Limn" },
+  { name: "WiP" },
+  { name: "LAS Art Foundation" },
+  { name: "Tinder" },
+  { name: "Wallet Connect" },
+  { name: "Hypebeast" },
+  { name: "Tiger of Sweden" },
+  { name: "Institut Français de la Mode" },
+  { name: "Skepta" },
+  { name: "DJ Hell" },
+  { name: "Len Faki" },
+  { name: "Federal Government of Germany" },
 ];
 
 export const contact = {
@@ -117,7 +143,6 @@ export const news = {
 
 export const cta = {
   primaryLabel: "Get In Contact",
-  primaryUrl: "mailto:mail@mariusjopen.com",
   secondaryLabel: "Subscribe",
   secondaryUrl: "https://blog.mariusjopen.com/",
 };
