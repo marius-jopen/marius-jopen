@@ -37,6 +37,26 @@ export interface ProjectCategory {
 
 export const projectCategories: ProjectCategory[] = [
   {
+    label: "Projects:",
+    items: [
+      {
+        name: "Spacebirth 2",
+        description: "Psychedelic Feature Sci-Fi Movie made from cardboard. A film by Richard Keith, Audrey Belaud and me.",
+        url: "https://spacebirth2.com",
+      },
+      {
+        name: "Ghostbirth 2",
+        description: "Feature Horror Movie about a pregnant ghost in a massage studio in Bangkok.",
+        url: "https://blog.mariusjopen.com/in-search-of-a-pregnant-ghost/",
+      },
+      {
+        name: "The Poster Times",
+        description: "One poster per day for one and a half years, a visual response to daily news events.",
+        url: "https://www.the-poster-times.xyz/",
+      },
+    ],
+  },
+  {
     label: "Ventures:",
     items: [
       {
@@ -53,26 +73,6 @@ export const projectCategories: ProjectCategory[] = [
         name: "Love Foundation",
         description: "Global community movement for unconditional love, clean water access, and social change. Co-founded by Philippe Birker, David Caspers and me.",
         url: "https://love-foundation.org",
-      },
-    ],
-  },
-  {
-    label: "Projects:",
-    items: [
-      {
-        name: "Ghostbirth 2",
-        description: "Feature Horror Movie about a pregnant ghost in a massage studio in Bangkok.",
-        url: "https://blog.mariusjopen.com/in-search-of-a-pregnant-ghost/",
-      },
-      {
-        name: "Spacebirth 2",
-        description: "Psychedelic Feature Sci-Fi Movie made from cardboard. A film by Richard Keith, Audrey Belaud and me.",
-        url: "https://spacebirth2.com",
-      },
-      {
-        name: "The Poster Times",
-        description: "One poster per day for one and a half years, a visual response to daily news events.",
-        url: "https://www.the-poster-times.xyz/",
       },
     ],
   },
