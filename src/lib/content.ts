@@ -70,7 +70,7 @@ export const projectCategories: ProjectCategory[] = [
         url: "https://spacebirth2.com",
       },
       {
-        name: "THE POSTER TIMES",
+        name: "The Poster Times",
         description: "One poster per day for one and a half years, a visual response to daily news events.",
         url: "https://www.the-poster-times.xyz/",
       },
