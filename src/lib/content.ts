@@ -47,7 +47,7 @@ export const projectCategories: ProjectCategory[] = [
       {
         name: "Ghostbirth 2",
         description: "Feature Horror Movie about a pregnant ghost in a massage studio in Bangkok.",
-        url: "https://blog.mariusjopen.com/in-search-of-a-pregnant-ghost/",
+        url: "https://www.ghostbirth2.com/",
       },
       {
         name: "The Poster Times",
