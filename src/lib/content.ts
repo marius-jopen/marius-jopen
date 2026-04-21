@@ -1,28 +1,14 @@
 // ============================================================
-// CONTENT CONFIGURATION
+// CONTENT LOADER
 // ============================================================
-// Edit this file to update all website content.
-// No need to touch any other files for content changes.
+// Content is managed via Keystatic at /keystatic and stored as
+// YAML under src/content/. Edit there — these readers load it.
 // ============================================================
 
-export const siteConfig = {
-  title: "Marius Jopen | Creative Technologist",
-  description:
-    "Creative Technologist & Director operating at the intersection of code, cinema, and visual art. Combining high-end tech architecture with generative AI. Berlin based, globally active.",
-  };
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
 
-export const hero = {
-  name: "Marius Jopen",
-  role: "Creative Technologist.",
-  location: "Globally active.",
-};
-
-export const about = {
-  paragraphs: [
-    "I operate at the intersection of code, cinema, and visual art. My practice is driven by exploration. I translate emerging technologies into digital systems and visual narratives.",
-    "My work oscillates between the precision of high-end tech architecture and the chaotic beauty of generative AI. I combine technical logic with artistic intent to create work that is visual, clear, and radically alive.",
-  ],
-};
+const reader = createReader(process.cwd(), keystaticConfig);
 
 export interface Project {
   name: string;
@@ -35,119 +21,89 @@ export interface ProjectCategory {
   items: Project[];
 }
 
-export const projectCategories: ProjectCategory[] = [
-  {
-    label: "Projects:",
-    items: [
-      {
-        name: "Spacebirth 2",
-        description: "Psychedelic Feature Sci-Fi Movie made from cardboard. A film by Richard Keith, Audrey Belaud and me.",
-        url: "https://spacebirth2.com",
-      },
-      {
-        name: "Ghostbirth 2",
-        description: "Feature Horror Movie about a pregnant ghost in a massage studio in Bangkok.",
-        url: "https://www.ghostbirth2.com/",
-      },
-      {
-        name: "The Poster Times",
-        description: "One poster per day for one and a half years, a visual response to daily news events.",
-        url: "https://www.the-poster-times.xyz/",
-      },
-    ],
-  },
-  {
-    label: "Ventures:",
-    items: [
-      {
-        name: "THE ROBOTS",
-        description: "AI Strategy & Implementation Laboratory. Founded by Paula Kühn and me.",
-        url: "https://therobots.world",
-      },
-      {
-        name: "100k",
-        description: "Web Development Studio. Founded by Armin Unruh and me.",
-        url: "https://100k.studio",
-      },
-      {
-        name: "Love Foundation",
-        description: "Global community movement for unconditional love, clean water access, and social change. Co-founded by Philippe Birker, David Caspers and me.",
-        url: "https://love-foundation.org",
-      },
-    ],
-  },
-  {
-    label: "Affiliated:",
-    items: [
-      {
-        name: "ArtCamp",
-        description: "Multi-disciplinary creative studio blending traditional techniques with emerging technology. Founded by Santiago Carrasquilla in New York.",
-        url: "https://www.madeatartcamp.com/",
-      },
-      {
-        name: "Limn",
-        description: "AI research and development lab exploring latent space as creative and philosophical territory. Founded by Tobias Rees.",
-        url: "https://www.instagram.com/limn_ai/",
-      },
-    ],
-  },
-];
-
 export interface Client {
   name: string;
   url?: string;
 }
 
-export const clients: Client[] = [
-  { name: "Google" },
-  { name: "LVMH" },
-  { name: "Louis Vuitton" },
-  { name: "Céline" },
-  { name: "Burberry" },
-  { name: "Loro Piana" },
-  { name: "McLaren" },
-  { name: "Marvel" },
-  { name: "Audemars Piguet" },
-  { name: "Stefan Sagmeister" },
-  { name: "Art Camp" },
-  { name: "Limn" },
-  { name: "WiP" },
-  { name: "LAS Art Foundation" },
-  { name: "Tinder" },
-  { name: "Wallet Connect" },
-  { name: "Hypebeast" },
-  { name: "Tiger of Sweden" },
-  { name: "Institut Français de la Mode" },
-  { name: "Skepta" },
-  { name: "DJ Hell" },
-  { name: "Len Faki" },
-  { name: "Federal Government of Germany" },
-];
+export async function getSiteConfig() {
+  const data = await reader.singletons.site.read();
+  return {
+    title: data?.title ?? "",
+    description: data?.description ?? "",
+  };
+}
 
-export const contact = {
-  intro:
-    "I am currently open to select commissions and collaborations.",
-  email: "mail@mariusjopen.com",
-  links: [
-    { label: "Instagram", url: "https://instagram.com/mariusjopen" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/mariusjopen" },
-  ],
-};
+export async function getHero() {
+  const data = await reader.singletons.hero.read();
+  return {
+    name: data?.name ?? "",
+    role: data?.role ?? "",
+    location: data?.location ?? "",
+  };
+}
 
-export const news = {
-  intro:
-    "Every week, I document the chaos of creation. From AI workflows to the realities of running a studio, I share the process behind the projects. Feel free to subscribe to my newsletter.",
-  subscribeUrl: "https://blog.mariusjopen.com/",
-  readUrl: "/news",
-};
+export async function getAbout() {
+  const data = await reader.singletons.about.read();
+  return {
+    paragraphs: [...(data?.paragraphs ?? [])],
+  };
+}
 
-export const cta = {
-  primaryLabel: "Get In Contact",
-  secondaryLabel: "Subscribe",
-  secondaryUrl: "https://blog.mariusjopen.com/",
-};
+export async function getProjectCategories(): Promise<ProjectCategory[]> {
+  const data = await reader.singletons.projects.read();
+  return (data?.categories ?? []).map((category) => ({
+    label: category.label,
+    items: category.items.map((item) => ({
+      name: item.name,
+      description: item.description,
+      url: item.url ?? "",
+    })),
+  }));
+}
 
-export const footer = {
-  legalLabel: "Imprint",
-  legalUrl: "/imprint",
-};
+export async function getClients(): Promise<Client[]> {
+  const data = await reader.singletons.clients.read();
+  return (data?.items ?? []).map((item) => ({
+    name: item.name,
+    url: item.url || undefined,
+  }));
+}
+
+export async function getContact() {
+  const data = await reader.singletons.contact.read();
+  return {
+    intro: data?.intro ?? "",
+    email: data?.email ?? "",
+    links: (data?.links ?? []).map((link) => ({
+      label: link.label,
+      url: link.url ?? "",
+    })),
+  };
+}
+
+export async function getNews() {
+  const data = await reader.singletons.news.read();
+  return {
+    intro: data?.intro ?? "",
+    subscribeUrl: data?.subscribeUrl ?? "",
+    readUrl: data?.readUrl ?? "",
+  };
+}
+
+export async function getCta() {
+  const data = await reader.singletons.cta.read();
+  return {
+    primaryLabel: data?.primaryLabel ?? "",
+    secondaryLabel: data?.secondaryLabel ?? "",
+    secondaryUrl: data?.secondaryUrl ?? "",
+  };
+}
+
+export async function getFooter() {
+  const data = await reader.singletons.footer.read();
+  return {
+    legalLabel: data?.legalLabel ?? "",
+    legalUrl: data?.legalUrl ?? "",
+  };
+}

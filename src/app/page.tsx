@@ -1,13 +1,13 @@
 import Link from "next/link";
 import {
-  hero,
-  about,
-  projectCategories,
-  clients,
-  contact,
-  news,
-  cta,
-  footer,
+  getHero,
+  getAbout,
+  getProjectCategories,
+  getClients,
+  getContact,
+  getNews,
+  getCta,
+  getFooter,
 } from "@/lib/content";
 import { EmailLink } from "@/components/EmailLink";
 import { EmailButton } from "@/components/EmailButton";
@@ -61,7 +61,19 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
   return <h2 className="font-bold leading-tight mb-1">{children}</h2>;
 }
 
-export default function Home() {
+export default async function Home() {
+  const [hero, about, projectCategories, clients, contact, news, cta, footer] =
+    await Promise.all([
+      getHero(),
+      getAbout(),
+      getProjectCategories(),
+      getClients(),
+      getContact(),
+      getNews(),
+      getCta(),
+      getFooter(),
+    ]);
+
   return (
     <main className="min-h-screen bg-white text-black">
       <Container>
@@ -153,7 +165,7 @@ export default function Home() {
                   {contact.email}
                 </EmailLink>
               )}
-              {contact.links.map((link) => 
+              {contact.links.map((link) =>
                 link.url ? (
                   <Link
                     key={link.label}
