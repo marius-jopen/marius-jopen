@@ -1,36 +1,31 @@
 categories:
-  - label: Currently
+  - label: "Projects:"
     items:
-      - name: ""
-        description: AI strategy for LVMH maisons through THE ROBOTS.
-        url: ""
-      - name: ""
-        description: Ghostbirth 2, a horror feature shot in Bangkok, in post-production.
-        url: ""
-      - name: ""
-        description: Fine art editions at mariusjopen.art — fifteen per work, signed, UID-stamped.
-        url: ""
-  - label: Films
-    items:
-      - name: Ghostbirth 2
-        description: Horror feature. Pregnant ghost, Bangkok massage studio.
-        url: https://www.ghostbirth2.com/
       - name: Spacebirth 2
-        description: Psychedelic sci-fi made from cardboard. With Richard Keith and Audrey Belaud.
+        description: Psychedelic Feature Sci-Fi Movie made from cardboard. A film by Richard Keith, Audrey Belaud and me.
         url: https://spacebirth2.com
-  - label: Studios
+      - name: Ghostbirth 2
+        description: Feature Horror Movie about a pregnant ghost in a massage studio in Bangkok.
+        url: https://www.ghostbirth2.com/
+      - name: The Poster Times
+        description: One poster per day for one and a half years, a visual response to daily news events.
+        url: https://www.the-poster-times.xyz/
+  - label: "Ventures:"
     items:
       - name: THE ROBOTS
-        description: AI strategy lab. With Paula Kühn.
+        description: AI Strategy & Implementation Laboratory. Founded by Paula Kühn and me.
         url: https://therobots.world
       - name: 100k
-        description: Web development studio. With Armin Unruh.
+        description: Web Development Studio. Founded by Armin Unruh and me.
         url: https://100k.studio
-  - label: Collaborations
+      - name: Love Foundation
+        description: Global community movement for unconditional love, clean water access, and social change. Co-founded by Philippe Birker, David Caspers and me.
+        url: https://love-foundation.org
+  - label: "Affiliated:"
     items:
       - name: ArtCamp
-        description: Multi-disciplinary creative studio in New York. Founded by Santiago Carrasquilla.
+        description: Multi-disciplinary creative studio blending traditional techniques with emerging technology. Founded by Santiago Carrasquilla in New York.
         url: https://www.madeatartcamp.com/
       - name: Limn
-        description: AI research lab exploring latent space as creative territory. Founded by Tobias Rees.
+        description: AI research and development lab exploring latent space as creative and philosophical territory. Founded by Tobias Rees.
         url: https://www.instagram.com/limn_ai/

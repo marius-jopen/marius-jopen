@@ -81,10 +81,8 @@ export default async function Home() {
           {/* Hero / Header */}
           <Section>
             <h1 className="font-bold leading-tight">{hero.name}</h1>
-            {hero.role && <p className="leading-tight">{hero.role}</p>}
-            {hero.location && (
-              <p className="leading-tight">{hero.location}</p>
-            )}
+            <p className="leading-tight">{hero.role}</p>
+            <p className="leading-tight">{hero.location}</p>
           </Section>
 
           {/* About / Intro */}
@@ -101,21 +99,20 @@ export default async function Home() {
             <Section key={category.label}>
               <SectionHeading>{category.label}</SectionHeading>
               <div className="space-y-4 mt-2">
-                {category.items.map((project, i) => (
-                  <div key={project.name || `${category.label}-${i}`}>
-                    {project.name &&
-                      (project.url ? (
-                        <Link
-                          href={project.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="leading-tight underline hover:opacity-60 transition-opacity"
-                        >
-                          {project.name}
-                        </Link>
-                      ) : (
-                        <span className="leading-tight">{project.name}</span>
-                      ))}
+                {category.items.map((project) => (
+                  <div key={project.name}>
+                    {project.url ? (
+                      <Link
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="leading-tight underline hover:opacity-60 transition-opacity"
+                      >
+                        {project.name}
+                      </Link>
+                    ) : (
+                      <span className="leading-tight">{project.name}</span>
+                    )}
                     <p className="leading-tight italic">
                       {project.description}
                     </p>
@@ -127,7 +124,7 @@ export default async function Home() {
 
           {/* Selected Clients & Collaborators */}
           <Section>
-            <SectionHeading>Clients include</SectionHeading>
+            <SectionHeading>Selected clients and collaborators:</SectionHeading>
             <p className="leading-tight mt-1">
               {clients.map((client, index) => (
                 <span key={index}>
@@ -151,16 +148,14 @@ export default async function Home() {
 
           {/* News */}
           <Section>
-            <SectionHeading>Newsletter</SectionHeading>
+            <SectionHeading>Studio Log:</SectionHeading>
             <p className="leading-tight mt-1">{news.intro}</p>
           </Section>
 
           {/* Contact */}
           <Section>
-            <SectionHeading>Contact</SectionHeading>
-            {contact.intro && (
-              <p className="leading-tight mt-1">{contact.intro}</p>
-            )}
+            <SectionHeading>Contact:</SectionHeading>
+            <p className="leading-tight mt-1">{contact.intro}</p>
             <div className="mt-4">
               {contact.email && (
                 <EmailLink
