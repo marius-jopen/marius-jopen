@@ -1,6 +1,11 @@
 categories:
   - label: 'Projects:'
     items:
+      - name: Ghostbirth 2
+        description: >-
+          A feature horror movie about a pregnant ghost in a massage studio in
+          Bangkok. 
+        url: https://www.ghostbirth2.com/
       - name: Spacebirth 2
         description: >-
           Psychedelic Feature Sci-Fi Movie made from cardboard. A film by
@@ -11,6 +16,11 @@ categories:
           One poster per day for one and a half years, a visual response to
           daily news events.
         url: https://www.the-poster-times.xyz/
+      - name: The Peters World
+        description: >
+          Peter is a tiny companion for a big, complicated world. With the help
+          of Aneta Vaškelytė we bring this little character to live.
+        url: https://www.thepeters.world/
   - label: 'Ventures:'
     items:
       - name: THE ROBOTS
